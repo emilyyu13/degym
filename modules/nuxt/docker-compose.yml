@@ -1,0 +1,17 @@
+services:
+  nuxt:
+    image: node:21.6-slim
+    container_name: ${PROJECT_NAME}-nuxt
+    command: npm run dev
+    # ports:
+    #   - "${DEV_HOST_IP:-127.0.0.1}:3000:3000"
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/work
+    working_dir: /work
+
+networks:
+  default:
+    name: ${PROJECT_NAME}
+    external: true
